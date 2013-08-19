@@ -2,7 +2,9 @@
 <html>
 <head>
 
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="http://cdn.sencha.io/ext-4.2.0-gpl/resources/ext-theme-neptune/ext-theme-neptune-all.css">
+
 	<style>
 		.custom-date-picker-footer .x-btn {
 			margin-bottom: 4px;
@@ -10,9 +12,97 @@
 	</style>
 </head>
 <body>
-	<h1>Custom Date Picker and field</h1>
-	<p>Provides extra Date Buttons along with the Today Button</p>
+
+
+	<div class="container">
+	<div class="tabbable"> <!-- Only required for left/right tabs -->
+	  <ul class="nav nav-tabs">
+		<li class="active"><a href="#datePickerDemo" data-toggle="tab">Example</a></li>
+		<li><a href="#datePickerCode" data-toggle="tab">Code</a></li>
+	  </ul>
+	  <div class="tab-content">
+		<div class="tab-pane active" id="datePickerDemo">
+		  <div id="datePicker"></div>
+		</div>
+		<div class="tab-pane" id="datePickerCode">
+<pre class="prettyprint linenums">
+Ext.create('Ext.panel.Panel', {
+	title: 'Choose a future date:',
+	requires:['Ext.picker.CustomDate'],
+	//width: 400,
+	bodyPadding: 10,
+	renderTo: 'datePicker',
+	items: [{
+		xtype: 'customdatepicker',
+		dayButtons: [
+			{	text: 'My Birth Day',
+				targetDate: '11/11/11'
+			},{	text: 'Your Birth Day',
+				targetDate: '12/13/13'
+			},{	text: 'Birth Day',
+				targetDate: '05/25/84'
+			}
+		],
+		handler: function(picker, date) {
+			// do something with the selected date
+		}
+	}]
+});	
+</pre>		  
+		</div><!-- / #datePickerCode -->
+	  </div> <!-- /.tab-content -->
+	</div>
+	<hr />
+
+	<div class="tabbable"> <!-- Only required for left/right tabs -->
+	  <ul class="nav nav-tabs">
+		<li class="active"><a href="#dateFieldDemo" data-toggle="tab">Example</a></li>
+		<li><a href="#dateFieldCode" data-toggle="tab">Code</a></li>
+	  </ul>
+	  <div class="tab-content">
+		<div class="tab-pane active" id="dateFieldDemo">
+			<div id="dateField"></div>
+		</div>
+		<div class="tab-pane" id="dateFieldCode">
+<pre class="prettyprint linenums">
+Ext.create('Ext.form.Panel', {
+	renderTo: 'dateField',
+	width: 300,
+	bodyPadding: 10,
+	title: 'Dates',
+	items: [{
+		xtype: 'customdatefield',
+		anchor: '100%',
+		fieldLabel: 'From',
+		name: 'from_date'
+		}, {
+		xtype: 'customdatefield',
+		anchor: '100%',
+		fieldLabel: 'To',
+		name: 'to_date',
+		value: new Date(),  // defaults to today
+		dayButtons: [
+			{	text: 'My Birth Day',
+				targetDate: '11/11/11'
+			},{	text: 'Good Day',
+				targetDate: '12/12/12'
+			},{	text: 'Your Birth Day',
+				targetDate: '05/25/84'
+			}
+		]
+	}]
+});
+</pre>		  
+		</div><!-- / #dateFieldCode -->
+	  </div> <!-- /.tab-content -->
+	</div>
+	<hr />
 	
+
+</div> <!-- /.cpontainer -->	
+	
+	<script src="../../js/vendor/jquery-1.9.1.min.js"></script>
+	<script src="../../js/vendor/bootstrap.js"></script>
 	<script src="http://cdn.sencha.io/ext-4.2.0-gpl/ext-all.js"></script>
 	<script src="Ext.picker.CustomDate.js"></script>
 	<script src="Ext.form.field.CustomDate.js"></script>
@@ -20,9 +110,9 @@
 		Ext.create('Ext.panel.Panel', {
 			title: 'Choose a future date:',
 			requires:['Ext.picker.CustomDate'],
-			width: 400,
+			//width: 400,
 			bodyPadding: 10,
-			renderTo: Ext.getBody(),
+			renderTo: 'datePicker',
 			items: [{
 				xtype: 'customdatepicker',
 				dayButtons: [
@@ -41,7 +131,7 @@
 		});
 		
 		Ext.create('Ext.form.Panel', {
-			renderTo: Ext.getBody(),
+			renderTo: 'dateField',
 			width: 300,
 			bodyPadding: 10,
 			title: 'Dates',
