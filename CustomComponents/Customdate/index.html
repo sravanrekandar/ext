@@ -15,6 +15,8 @@
 
 
 	<div class="container">
+	<h3>CustomDatePicker</h3>
+	<p>Provides the functionality of Giving new day buttons along with the today button</p>
 	<div class="tabbable"> <!-- Only required for left/right tabs -->
 	  <ul class="nav nav-tabs">
 		<li class="active"><a href="#datePickerDemo" data-toggle="tab">Example</a></li>
@@ -53,7 +55,8 @@ Ext.create('Ext.panel.Panel', {
 	  </div> <!-- /.tab-content -->
 	</div>
 	<hr />
-
+	<h3>CustomDateField</h3>
+	<p>Date Field that used the CustomDatePicker</p>
 	<div class="tabbable"> <!-- Only required for left/right tabs -->
 	  <ul class="nav nav-tabs">
 		<li class="active"><a href="#dateFieldDemo" data-toggle="tab">Example</a></li>
@@ -108,7 +111,7 @@ Ext.create('Ext.form.Panel', {
 	<script src="Ext.form.field.CustomDate.js"></script>
 	<script>
 		Ext.create('Ext.panel.Panel', {
-			title: 'Choose a future date:',
+			title: 'Choose date:',
 			requires:['Ext.picker.CustomDate'],
 			//width: 400,
 			bodyPadding: 10,
